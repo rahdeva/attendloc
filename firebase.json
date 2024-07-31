@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"attendloc","appId":"1:629994256211:android:3eeee092f7dc08a29213a6","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"attendloc","configurations":{"android":"1:629994256211:android:3eeee092f7dc08a29213a6","ios":"1:629994256211:ios:820aebb6cd237efb9213a6"}}}}}}

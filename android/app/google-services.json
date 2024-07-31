@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "629994256211",
+    "project_id": "attendloc",
+    "storage_bucket": "attendloc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629994256211:android:3eeee092f7dc08a29213a6",
+        "android_client_info": {
+          "package_name": "com.example.attendloc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvq8LJwKckZ8V09N1HOlQQYu50o61c1jw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
