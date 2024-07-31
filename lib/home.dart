@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
-  final AttendanceController controller = Get.put(AttendanceController());
+  final AttendancesController controller = Get.put(AttendancesController());
 
   @override
   Widget build(BuildContext context) {

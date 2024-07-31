@@ -5,7 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:geolocator/geolocator.dart';
 
-class AttendanceController extends GetxController {
+class AttendancesController extends GetxController {
   var locations = <LocationDataApp>[].obs;
   var attendances = <AttendanceData>[].obs;
 
@@ -53,7 +53,7 @@ class AttendanceController extends GetxController {
       _locationData.longitude!,
     );
 
-    final controller = Get.find<AttendanceController>();
+    final controller = Get.find<AttendancesController>();
     final validLocation = controller.locations.firstWhere(
         (location) => controller.checkDistance(userPosition, location.position),
         orElse: () => LocationDataApp(

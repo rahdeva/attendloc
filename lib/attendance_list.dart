@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AttendanceListWidget extends StatelessWidget {
-  final AttendanceController controller = Get.find();
+  final AttendancesController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {

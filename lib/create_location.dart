@@ -25,7 +25,7 @@ class _CreateLocationScreenState extends State<CreateLocationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final AttendanceController controller = Get.find();
+    final AttendancesController controller = Get.find();
     
     return Scaffold(
       appBar: AppBar(title: Text("Create Location")),

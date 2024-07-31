@@ -26,12 +26,6 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 50),
-                      Text(
-                        'User : ${controller.userName}',
-                        style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                          color: Colors.black,
-                        ),
-                      )
                     ],
                   ),
                 ),
