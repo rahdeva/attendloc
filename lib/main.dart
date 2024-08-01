@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -18,21 +19,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  return Sizer(builder: (context, orientation, deviceType) {
-      return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        initialRoute: PageName.SPLASH,
-        getPages: PageRoutes.pages,
-        theme: AppTheme.buildThemeData(false),
-        builder: (BuildContext context, child) {
-          return MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-              textScaler: const TextScaler.linear(1.0)
-            ),
-            child: child ?? Container(),
-          );
-        },
-      );
-    });
+  return StreamBuilder<User?>(
+    stream: FirebaseAuth.instance.authStateChanges(),
+    builder: (_, snap){
+      if(snap.connectionState == ConnectionState.waiting){
+        return const Center(child: CircularProgressIndicator.adaptive());
+      }
+      return Sizer(builder: (context, orientation, deviceType) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: PageName.SPLASH,
+          getPages: PageRoutes.pages,
+          theme: AppTheme.buildThemeData(false),
+          builder: (BuildContext context, child) {
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                textScaler: const TextScaler.linear(1.0)
+              ),
+              child: child ?? Container(),
+            );
+          },
+        );
+      });
+    }
+  );
   }
 }

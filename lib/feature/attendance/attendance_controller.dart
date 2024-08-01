@@ -1,3 +1,5 @@
+import 'package:attendloc/routes/page_names.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class AttendanceController extends GetxController {
@@ -12,4 +14,13 @@ class AttendanceController extends GetxController {
     'WF0 - LOKASI LAINNYA',
     'WF0 - STUDIO PENTA',
   ];
+
+  void logout() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Get.offAllNamed(PageName.LOGIN);
+    } catch (e) {
+      Get.snackbar("TERJADI KESALAHAN", "Tidak dapat logout.");
+    }
+  }
 }

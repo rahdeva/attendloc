@@ -1,5 +1,7 @@
-import 'package:attendloc/feature/home/home_binding.dart';
-import 'package:attendloc/feature/home/home_page.dart';
+import 'package:attendloc/feature/add_location/add_location_binding.dart';
+import 'package:attendloc/feature/add_location/add_location_page.dart';
+import 'package:attendloc/feature/attendance/attendance_binding.dart';
+import 'package:attendloc/feature/attendance/attendance_page.dart';
 import 'package:attendloc/feature/login/login_binding.dart';
 import 'package:attendloc/feature/login/login_page.dart';
 import 'package:attendloc/feature/splash/splash_screen.dart';
@@ -18,9 +20,14 @@ class PageRoutes {
       binding: LoginBinding(),
     ),
     GetPage(
-      name: PageName.HOME,
-      page: () => const HomePage(),
-      binding: HomeBinding(),
+      name: PageName.ATTENDANCE,
+      page: () => const AttendancePage(),
+      binding: AttendanceBinding(),
+    ),
+    GetPage(
+      name: PageName.ADD_LOCATION,
+      page: () => const AddLocationPage(),
+      binding: AddLocationBinding(),
     ),
   ];
 }

@@ -9,15 +9,21 @@ import 'package:get/get.dart';
 
 import '../../resources/resources.dart';
 
-class LiveAttendPage extends StatelessWidget {
-  const LiveAttendPage({super.key});
+class AttendancePage extends StatelessWidget {
+  const AttendancePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget.simple(
+        context: context, 
         titleString: "Attendance", 
-        context: context
+        actions: [
+          IconButton(
+            onPressed: (){}, 
+            icon: const Icon(Icons.logout)
+          )
+        ]
       ),
       body: GetBuilder<AttendanceController>(
         builder: (controller) {

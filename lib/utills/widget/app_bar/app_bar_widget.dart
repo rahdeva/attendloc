@@ -5,7 +5,6 @@ import '/resources/resources.dart';
 class AppBarWidget{
   static AppBar defaultAppBar({
     Color? color,
-    required Brightness brightness,
     ImageProvider? backImage,
     String? title,
     TextStyle? titleStyle,
@@ -47,7 +46,8 @@ class AppBarWidget{
   // AppBar transparent with just Back Button
   static AppBar simple({
     required String titleString, 
-    required BuildContext context
+    required BuildContext context,
+    List<Widget>? actions,
   }) {
     return AppBar(
       iconTheme: const IconThemeData(
@@ -61,6 +61,7 @@ class AppBarWidget{
           color: AppColors.textColour80
         ),
       ),
+      actions: actions ?? [],
     );
   }
 }

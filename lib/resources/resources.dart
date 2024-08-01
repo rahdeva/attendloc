@@ -7,7 +7,7 @@ final AppImages = asset.Assets.lib.resources.images;
 
 class AppColors {
   static const appBar = Color(0xFFFFFFFF);
-  static const colorPrimary = Color(0xFF537FE7);
+  static const colorPrimary = Color(0xFF0D2833);
   static const colorSecondary = Color(0xFFA8AAAE);
   static const success = Color(0xFF28C76F);
   static const danger = Color(0xFFEA5455);

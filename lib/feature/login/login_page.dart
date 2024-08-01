@@ -1,5 +1,9 @@
 import 'package:attendloc/feature/login/login_controller.dart';
 import 'package:attendloc/resources/resources.dart';
+import 'package:attendloc/utills/helper/validator.dart';
+import 'package:attendloc/utills/widget/button/primary_button.dart';
+import 'package:attendloc/utills/widget/forms/label_form_widget.dart';
+import 'package:attendloc/utills/widget/forms/text_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
@@ -19,7 +23,7 @@ class LoginPage extends StatelessWidget {
             return FormBuilder(
               key: controller.formKey,
               child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16.0),
+                margin: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -44,30 +48,53 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 40),
-                      // Align(
-                      //   alignment: Alignment.centerLeft,
-                      //   child: Text(
-                      //     "txt_general_username".tr,
-                      //     style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      //       color: AppColors.textColour70
-                      //     ),
-                      //   ),
-                      // ),
-                      // const SizedBox(height: 8),
-                      // FormBuilderTextField(
-                      //   name: 'username',
-                      //   enabled: !controller.isLoading,
-                      //   decoration: InputDecoration(
-                      //     hintText: 'txt_general_username'.tr,
-                      //   ),
-                      //   validator: Validator.required(),
-                      //   keyboardType: TextInputType.emailAddress,
-                      //   maxLines: 1,
-                      //   onChanged: (text) {
-
-                      //   },
-                      // ),
-
+                      const LabelFormWidget(labelText: "Email"),
+                      TextFieldWidget(
+                        name: 'email',
+                        hintText: 'Enter your email',
+                        validator: Validator.required(),
+                        keyboardType: TextInputType.text, 
+                      ),
+                      const SizedBox(height: 16),
+                      const LabelFormWidget(labelText: "Password"),
+                      TextFieldWidget(
+                        hintText: "Enter your password",
+                        name: 'password',
+                        obsecure: controller.isObscure,
+                        validator: Validator.required(),
+                        keyboardType: TextInputType.text,
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            controller.isObscure = !controller.isObscure;
+                            controller.update();
+                          },
+                          icon: controller.isObscure
+                            ? const Icon(
+                                Icons.visibility_outlined,
+                                color: AppColors.colorPrimary,
+                              )
+                            : const Icon(
+                                Icons.visibility_off_outlined,
+                                color: AppColors.colorPrimary,
+                              ),
+                        ),
+                      ),
+                      const SizedBox(height: 60),
+                      PrimaryButton(
+                        title: "Login",
+                        onPressed: () async {
+                          if (
+                            controller.formKey.currentState != null &&
+                            controller.formKey.currentState!.saveAndValidate()
+                          ){
+                            controller.loginEmail(
+                              context: context,
+                              emailInput: controller.formKey.currentState!.fields['email']!.value,
+                              passwordInput: controller.formKey.currentState!.fields['password']!.value,
+                            );
+                          }
+                        },
+                      ),
                     ],
                   ),
                 ),

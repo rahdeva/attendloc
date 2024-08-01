@@ -1,5 +1,5 @@
 
-import 'package:attendloc/feature/attendance/add_location/add_location_controller.dart';
+import 'package:attendloc/feature/add_location/add_location_controller.dart';
 import 'package:attendloc/utills/widget/app_bar/app_bar_widget.dart';
 import 'package:attendloc/utills/widget/floating_action_button/floating_submit_button.dart';
 import 'package:attendloc/utills/widget/forms/label_form_widget.dart';
@@ -8,7 +8,7 @@ import 'package:attendloc/utills/widget/pop_up/pop_up_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
-import '../../../utills/helper/validator.dart';
+import '../../utills/helper/validator.dart';
 
 class AddLocationPage extends StatelessWidget {
   const AddLocationPage({super.key});
