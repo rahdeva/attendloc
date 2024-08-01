@@ -1,7 +1,6 @@
 import 'package:attendloc/resources/resources.dart';
 import 'package:attendloc/utills/widget/button/primary_button.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class FloatingSubmitButton extends StatelessWidget {
