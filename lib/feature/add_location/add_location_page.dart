@@ -1,10 +1,11 @@
 
 import 'package:attendloc/feature/add_location/add_location_controller.dart';
+import 'package:attendloc/resources/resources.dart';
 import 'package:attendloc/utills/widget/app_bar/app_bar_widget.dart';
+import 'package:attendloc/utills/widget/button/outlined_secondary_button.dart';
 import 'package:attendloc/utills/widget/floating_action_button/floating_submit_button.dart';
 import 'package:attendloc/utills/widget/forms/label_form_widget.dart';
 import 'package:attendloc/utills/widget/forms/text_field_widget.dart';
-import 'package:attendloc/utills/widget/pop_up/pop_up_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,7 @@ class AddLocationPage extends StatelessWidget {
       builder: (controller) {
         return Scaffold(
           appBar: AppBarWidget.simple(
-            titleString: "txt_medical_request_medical".tr, 
+            titleString: "Add New Office Location", 
             context: context
           ),
           body: FormBuilder(
@@ -30,13 +31,48 @@ class AddLocationPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    LabelFormWidget(labelText: "txt_medical_nama_pegawai".tr),
+                    const LabelFormWidget(labelText: "Location Name"),
                     TextFieldWidget(
-                      name: 'namaPegawai',
-                      hintText: 'txt_medical_nama_pegawai'.tr,
+                      name: 'locationName',
+                      hintText: 'Location Name',
                       validator: Validator.required(),
-                      enabled: false,
-                      initialValue: "GRANDI EKABUANA RAMDHANI",
+                    ),
+                    const SizedBox(height: 24),
+                    Visibility(
+                      visible: controller.newLocLatitude != null,
+                      child: Column(
+                        children: [
+                          const LabelFormWidget(labelText: "Latitude"),
+                          TextFieldWidget(
+                            name: 'latitude',
+                            hintText: "Latitude",
+                            initialValue: controller.newLocLatitude.toString(),
+                            validator: Validator.required(),
+                            enabled: false,
+                          ),
+                          const SizedBox(height: 24),
+                          const LabelFormWidget(labelText: "Longitude"),
+                          TextFieldWidget(
+                            name: 'longitude',
+                            hintText: "Longitude",
+                            initialValue: controller.newLocLongitude.toString(),
+                            validator: Validator.required(),
+                            enabled: false,
+                          ),
+                          const SizedBox(height: 24),
+                        ],
+                      ),
+                    ),
+                    OutlinedSecondaryButton(
+                      icon: const Icon(
+                        Icons.location_on,
+                        size: 14,
+                        color: AppColors.colorSecondary,
+                      ),
+                      title: "Choose Location",
+                      onPressed: () {
+                        controller.chooseLocation();
+                      }
                     ),
                     const SizedBox(height: 100),
                   ],
@@ -51,11 +87,11 @@ class AddLocationPage extends StatelessWidget {
                 controller.formKey.currentState != null &&
                 controller.formKey.currentState!.saveAndValidate()
               ){
-                PopUpWidget.successAndFailPopUp(
+                controller.addLocation(
                   context: context, 
-                  titleString: "txt_general_request_sent".tr, 
-                  middleText: "txt_general_request_success".tr, 
-                  buttonText: "txt_button_ok".tr
+                  locationName: controller.formKey.currentState!.fields['locationName']!.value, 
+                  latitude: double.parse(controller.formKey.currentState!.fields['latitude']!.value), 
+                  longitude: double.parse(controller.formKey.currentState!.fields['longitude']!.value), 
                 );
               }
             },

@@ -13,8 +13,7 @@ class ListAttendanceBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      // itemCount: controller.dataList.length,
-      itemCount: 1,
+      itemCount: controller.listAttendance.length,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       separatorBuilder: (context, index) {
@@ -24,7 +23,7 @@ class ListAttendanceBuilder extends StatelessWidget {
         return AttendanceListItem(
           index: index,
           controller: controller,
-          // mData: controller.dataList[index],
+          mData: controller.listAttendance[index],
         );
       },
     );

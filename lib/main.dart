@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       return Sizer(builder: (context, orientation, deviceType) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: PageName.SPLASH,
+          initialRoute: snap.data != null ? PageName.ATTENDANCE : PageName.SPLASH,
           getPages: PageRoutes.pages,
           theme: AppTheme.buildThemeData(false),
           builder: (BuildContext context, child) {

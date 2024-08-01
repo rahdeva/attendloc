@@ -19,7 +19,7 @@ class LabelFormWidget extends StatelessWidget {
       child: Text(
         labelText,
         style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-              color: color == null ? AppColors.textColour70 : color!,
+              color: color == null ? AppColors.textColour90 : color!,
             ),
       ),
     );

@@ -6,4 +6,5 @@ class PageName {
   static const HOME = "/home";
   static const ATTENDANCE = "/attendance";
   static const ADD_LOCATION = "/add-location";
+  static const CHOOSE_LOCATION = "/choose-location";
 }

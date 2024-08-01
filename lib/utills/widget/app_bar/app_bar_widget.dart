@@ -53,7 +53,7 @@ class AppBarWidget{
       iconTheme: const IconThemeData(
         color: AppColors.textColour80
       ),
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       title: Text(
         titleString,
         style: Theme.of(context).textTheme.headlineSmall!.copyWith(

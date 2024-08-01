@@ -8,7 +8,7 @@ final AppImages = asset.Assets.lib.resources.images;
 class AppColors {
   static const appBar = Color(0xFFFFFFFF);
   static const colorPrimary = Color(0xFF0D2833);
-  static const colorSecondary = Color(0xFFA8AAAE);
+  static const colorSecondary = Color.fromARGB(255, 91, 93, 95);
   static const success = Color(0xFF28C76F);
   static const danger = Color(0xFFEA5455);
   static const warning = Color(0xFFFF9F43);

@@ -62,7 +62,7 @@ class LoginController extends GetxController {
         //                 Icons.cancel,
         //                 color: AppColors.red,
         //               ),
-        //               title: "Terjadi Kesalahan",
+        //               title: "Oops!",
         //               subtitle: "Kamu terlalu banyak meminta kirim email verifikasi.",
         //             );
         //           }
@@ -80,7 +80,7 @@ class LoginController extends GetxController {
               Icons.cancel,
               color: AppColors.red,
             ),
-            title: "Terjadi Kesalahan",
+            title: "Oops!",
             subtitle: "Tidak ditemukan User dengan Email yang Anda masukkan.",
           );
         } else if (e.code == 'wrong-password') {
@@ -90,7 +90,7 @@ class LoginController extends GetxController {
               Icons.cancel,
               color: AppColors.red,
             ),
-            title: "Terjadi Kesalahan",
+            title: "Oops!",
             subtitle: "Password yang Anda masukkan salah.",
           );
         } else {
@@ -99,7 +99,7 @@ class LoginController extends GetxController {
               Icons.cancel,
               color: AppColors.red,
             ),
-            title: "Terjadi Kesalahan",
+            title: "Oops!",
             subtitle: e.code,
           );
         }
