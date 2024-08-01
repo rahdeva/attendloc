@@ -7,6 +7,7 @@ import 'package:attendloc/utills/widget/snackbar/snackbar_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 
 class AddLocationController extends GetxController {
@@ -16,6 +17,33 @@ class AddLocationController extends GetxController {
   double? newLocLongitude;
 
   void chooseLocation() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        SnackbarWidget.defaultSnackbar(
+          icon: const Icon(
+            Icons.cancel,
+            color: AppColors.red,
+          ),
+          title: "Permission Denied",
+          subtitle: "Location permission is required to track attendance.",
+        );
+        return;
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      SnackbarWidget.defaultSnackbar(
+        icon: const Icon(
+          Icons.cancel,
+          color: AppColors.red,
+        ),
+        title: "Permission Denied Forever",
+        subtitle: "Location permission is permanently denied. Please enable it in settings.",
+      );
+      return;
+    }
+
     final selectedLocation = await Get.toNamed(PageName.CHOOSE_LOCATION);
     if (selectedLocation != null) {
       newLocLatitude = selectedLocation["latitude"];
